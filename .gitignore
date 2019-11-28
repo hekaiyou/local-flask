@@ -1,0 +1,6 @@
+# 忽略 venv/ 目录下的所有文件
+venv/
+# 忽略 venv/ 目录下的所有文件
+.idea/
+# 忽略 LocalFlask.db 文件
+LocalFlask.db
