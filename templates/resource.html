@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="header">
+        <form class="pure-form" style="margin-bottom:35px;" method="post" action="/resource/search" autocomplete="off">
+            <input type="text" class="pure-input-rounded" value="{{ search }}" name="search">
+            <button type="submit" class="pure-button pure-button-primary" style="margin-left:10px;">Search</button>
+        </form>
+    </div>
+    <div class="content">
+        <table class="pure-table" width="100%" style="margin-top:50px;">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Type</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for resource in resources %}
+                <tr {% if not loop.index is divisibleby(2) %}class="pure-table-odd"{% endif %}>
+                    <td>{{ resource.id }}</td>
+                    <td><a href="{{ resource.url }}">{{ resource.name }}</a></td>
+                    <td>{{ resource.type | capitalize }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% if resources | length == 0 %}
+            <h3 style="text-align:center;margin-top:60px;">There are currently {{ count }} resources to search ...</h3>
+        {% endif %}
+    </div>
+{% endblock %}

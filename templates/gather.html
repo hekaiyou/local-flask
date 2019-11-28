@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="header">
+        <h1>Add resource</h1>
+        <h2>Your favorite videos, novels, movies, music, etc...</h2>
+    </div>
+    <div class="content">
+        <form class="pure-form" style="text-align:center;" method="post" action="/gather/warehouse" autocomplete="off">
+            <input type="text" class="pure-input-1-2" placeholder="Description of the resource" style="margin-top:45px;"
+                   name="name">
+            {% if span == '1' %}<span class="pure-form-message">Description cannot be empty</span>{% endif %}
+            <textarea class="pure-input-1-2" placeholder="URL or magnetic link of the resource" style="margin-top:10px;"
+                      name="url"></textarea>
+            {% if span == '1' %}<span class="pure-form-message">Link cannot be empty</span>{% endif %}
+            <select id="state" class="pure-input-1-2" style="margin-top:15px;" name="type">
+                <option value="VIDEO">Video</option>
+                <option value="IMAGE">Image</option>
+                <option value="MOVIE">Movie</option>
+                <option value="APPLY">Apply</option>
+                <option value="MUSIC">Music</option>
+                <option value="FICTION">Fiction</option>
+                <option value="CARTOON">Cartoon</option>
+                <option value="ANIME">Anime</option>
+            </select>
+            <button type="submit" class="pure-button pure-input-1-2 pure-button-primary" style="margin-top:35px;">
+                Warehouse
+            </button>
+        </form>
+    </div>
+{% endblock %}
